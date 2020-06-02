@@ -113,13 +113,11 @@ model.compile(optimizer=Adam(2e-4), loss='binary_crossentropy', metrics=[dice_co
 weight_saver = ModelCheckpoint('lung.h5', monitor='val_dice_coef',
                                               save_best_only=True, save_weights_only=True)
 
-annealer = LearningRateScheduler(lambda x: 1e-3 * 0.8 ** x)
-
 hist = model.fit_generator(generator(x_train, y_train, 8),
                            steps_per_epoch = 200,
                            validation_data = (x_val, y_val),
                            epochs = 10, verbose=2,
-                           callbacks = [weight_saver, annealer])
+                           callbacks = [weight_saver])
 
 model.load_weights('lung.h5')
 
