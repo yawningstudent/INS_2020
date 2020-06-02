@@ -11,7 +11,7 @@ from keras.optimizers import Adam
 from keras.regularizers import l2
 from keras.preprocessing.image import ImageDataGenerator
 import keras.backend as K
-from keras.callbacks import LearningRateScheduler, ModelCheckpoint
+from keras.callbacks import ModelCheckpoint
 
 IMAGE_LIB = './data/2d_images/'
 MASK_LIB = './data/2d_masks/'
